@@ -6,8 +6,22 @@ import BarGraph from './barGraph';
 import styles from './styles/dashboard.module.css';
 
 export class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: ''
+    }
+  }
+
+  updateSearchTerm(e) {
+    this.setState({
+      searchTerm: e.target.value
+    })
+  }
+
   fetchData(e) {
     e.preventDefault();
+    console.log(this.state.searchTerm);
     this.props.dispatch(fetchWeatherData())
   }
 
@@ -22,6 +36,8 @@ export class Dashboard extends Component {
             className={styles.form}
           >
             <input
+              value={this.state.searchTerm}
+              onChange={e => this.updateSearchTerm(e)}
               type="search"
               id="search"
               name="search"
