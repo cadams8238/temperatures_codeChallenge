@@ -38,7 +38,6 @@ export const getWeatherHistoryData = () => {
   let dates = [];
 
   for (let i = 0; i < 7; i++) {
-    console.log(i);
     if (i === 0) {
       dates.push(moment().format('YYYY-M-D'))
     }
@@ -49,6 +48,10 @@ export const getWeatherHistoryData = () => {
   return dates;
 }
 
+export const createURLs = (dates, search) => {
+  return dates.map(date => `${BASE_API_URL}0e565417ca764b0d86b191522181409&q=${search}&dt=${date}`);
+}
+
 
 
 export const fetchWeatherData = searchTerm => dispatch => {
@@ -57,12 +60,15 @@ export const fetchWeatherData = searchTerm => dispatch => {
 
 
   const search = encodeSpaces(searchTerm);
-  console.log(getWeatherHistoryData());
+  const weatherHistoryDates = getWeatherHistoryData();
+  const urls = createURLs(weatherHistoryDates, search);
 
 
   return (
-    fetch(`${BASE_API_URL}0e565417ca764b0d86b191522181409&q=${search}&dt=2018-9-14`)
-      .then(response => response.json())
+    Promise.all(urls.map(url =>
+      fetch(url)
+        .then(res => res.json())
+    ))
       .then(res => console.log(res))
   );
 }
