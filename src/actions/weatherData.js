@@ -18,10 +18,11 @@ const fetchWeatherDataError = error => ({
   error
 })
 
-export const fetchWeatherData = dispatch => {
+export const fetchWeatherData = () => dispatch => {
+  // console.log(process.env.REACT_APP_API_KEY);
   dispatch(fetchWeatherDataRequest)
   return (
-    fetch(`${BASE_API_URL}${REACT_APP_API_KEY}&q=Istanbul&dt=2018-9-14`)
+    fetch(`${BASE_API_URL}0e565417ca764b0d86b191522181409&q=Istanbul&dt=2018-9-14`)
       .then(response => response.json())
       .then(res => console.log(res))
   );

@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchWeatherData } from '../actions/weatherData';
 import BarGraph from './barGraph';
+
 import styles from './styles/dashboard.module.css';
 
-export default class Dashboard extends Component {
+export class Dashboard extends Component {
+  fetchData(e) {
+    e.preventDefault();
+    this.props.dispatch(fetchWeatherData())
+  }
 
   render() {
     return (
@@ -11,7 +18,7 @@ export default class Dashboard extends Component {
           <h1 className={styles.h1}>
             Search cities for 7-day weather history from today
           </h1>
-          <form role="search"
+          <section role="search"
             className={styles.form}
           >
             <input
@@ -21,13 +28,19 @@ export default class Dashboard extends Component {
               placeholder="Amsterdam"
               aria-label="Search cities for weather history"
             />
-            <button>
+            <button onClick={(e) => this.fetchData(e)}>
               <img src={require('../images/search.svg')} alt="search icon" />
             </button>
-          </form>
+          </section>
         </div>
         <BarGraph />
       </div>
     );
   }
 }
+
+// const mapStateToProps = state => ({
+//
+// })
+
+export default connect()(Dashboard);
