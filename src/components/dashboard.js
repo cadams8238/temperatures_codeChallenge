@@ -21,8 +21,7 @@ export class Dashboard extends Component {
 
   fetchData(e) {
     e.preventDefault();
-    console.log(this.state.searchTerm);
-    this.props.dispatch(fetchWeatherData())
+    this.props.dispatch(fetchWeatherData(this.state.searchTerm))
   }
 
   render() {
@@ -32,6 +31,8 @@ export class Dashboard extends Component {
           <h1 className={styles.h1}>
             Search cities for 7-day weather history from today
           </h1>
+          {/* section should be form - having trouble debugging why e.preventDefault won't work
+          on form, changed to section temporarily, will fix later */}
           <section role="search"
             className={styles.form}
           >
