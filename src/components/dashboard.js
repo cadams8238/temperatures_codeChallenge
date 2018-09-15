@@ -21,7 +21,9 @@ export default class Dashboard extends Component {
               placeholder="Amsterdam"
               aria-label="Search cities for weather history"
             />
-            <button>Search</button>
+            <button>
+              <img src={require('../images/search.svg')} alt="search icon" />
+            </button>
           </form>
         </div>
         <BarGraph />

@@ -35,5 +35,12 @@
   background-color: #845EC2;
   vertical-align: top;
   border-radius: 0 25px 25px 0;
+}
 
+.form button img {
+  width: 30px;
+}
+
+.form button:hover {
+  cursor: pointer;
 }
