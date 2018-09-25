@@ -25,29 +25,40 @@ export class Dashboard extends Component {
   }
 
   render() {
+    let cityInfo;
+
+    if (this.props.data) {
+      cityInfo = (
+        <div className={styles.cityInfo}>
+          <h2>{`${this.props.data.name}, ${this.props.data.region}`}</h2>
+          <p>{`${this.props.data.country}`}</p>
+        </div>
+      )
+    }
+
     return (
       <div>
-        <div className={styles.headerBackground}>
-          <h1 className={styles.h1}>
-            Search cities for 7-day weather history from today
-          </h1>
-          <form role="search"
-            className={styles.form}
-          >
-            <input
-              value={this.state.searchTerm}
-              onChange={e => this.updateSearchTerm(e)}
-              type="search"
-              id="search"
-              name="search"
-              placeholder="Amsterdam"
-              aria-label="Search cities for 7 day weather history"
-            />
-            <button onClick={(e) => this.fetchData(e)}>
-              <img src={require('../images/search.svg')} alt="search icon" />
-            </button>
-          </form>
-        </div>
+        <div className={styles.headerBackground}></div>
+        <h1 className={styles.h1}>
+          Search cities for 7-day weather history from today
+        </h1>
+        <form role="search"
+          className={styles.form}
+        >
+          <input
+            value={this.state.searchTerm}
+            onChange={e => this.updateSearchTerm(e)}
+            type="search"
+            id="search"
+            name="search"
+            placeholder="Amsterdam"
+            aria-label="Search cities for 7 day weather history"
+          />
+          <button onClick={(e) => this.fetchData(e)}>
+            <img src={require('../images/search.svg')} alt="search icon" />
+          </button>
+        </form>
+        {cityInfo}
         <BarGraph />
       </div>
     );

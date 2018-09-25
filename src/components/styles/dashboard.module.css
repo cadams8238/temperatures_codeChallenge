@@ -3,6 +3,9 @@
   height: 40vh;
   width: 100vw;
   z-index: -5;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .h1 {
@@ -43,4 +46,18 @@
 
 .form button:hover {
   cursor: pointer;
+}
+
+.cityInfo {
+  width: 60vw;
+  color: white;
+  margin: 0 auto;
+}
+
+.cityInfo h2 {
+  margin-bottom: 0;
+}
+
+.cityInfo p {
+  margin-top: 0;
 }
