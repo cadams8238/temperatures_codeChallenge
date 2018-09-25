@@ -52,6 +52,39 @@ export const createURLs = (dates, search) => {
   return dates.map(date => `${BASE_API_URL}0e565417ca764b0d86b191522181409&q=${search}&dt=${date}`);
 }
 
+export const aggregateData = (apiResponse) => {
+  let data = {};
+
+  for (let i = apiResponse.length - 1; i >= 0; i--) {
+    if (i === apiResponse.length - 1) {
+      data = {
+        name: apiResponse[i].location.name,
+        region: apiResponse[i].location.region,
+        country: apiResponse[i].location.country,
+        temps: [
+          {
+            date: apiResponse[i].forecast.forecastday[0].date,
+            maxtemp_c: apiResponse[i].forecast.forecastday[0].day.maxtemp_c,
+            mintemp_c: apiResponse[i].forecast.forecastday[0].day.mintemp_c,
+            maxtemp_f: apiResponse[i].forecast.forecastday[0].day.maxtemp_f,
+            mintemp_f: apiResponse[i].forecast.forecastday[0].day.mintemp_f
+          }
+        ]
+      }
+    }
+    else {
+      data.temps.push({
+        date: apiResponse[i].forecast.forecastday[0].date,
+        maxtemp_c: apiResponse[i].forecast.forecastday[0].day.maxtemp_c,
+        mintemp_c: apiResponse[i].forecast.forecastday[0].day.mintemp_c,
+        maxtemp_f: apiResponse[i].forecast.forecastday[0].day.maxtemp_f,
+        mintemp_f: apiResponse[i].forecast.forecastday[0].day.mintemp_f
+      })
+    }
+  }
+  return data;
+}
+
 
 
 export const fetchWeatherData = searchTerm => dispatch => {
@@ -69,6 +102,7 @@ export const fetchWeatherData = searchTerm => dispatch => {
       fetch(url)
         .then(res => res.json())
     ))
+      .then(res => aggregateData(res))
       .then(res => console.log(res))
   );
 }
