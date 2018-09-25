@@ -91,11 +91,9 @@ export const fetchWeatherData = searchTerm => dispatch => {
   // console.log(process.env.REACT_APP_API_KEY);
   dispatch(fetchWeatherDataRequest)
 
-
   const search = encodeSpaces(searchTerm);
   const weatherHistoryDates = getWeatherHistoryDates();
   const urls = createURLs(weatherHistoryDates, search);
-
 
   return (
     Promise.all(urls.map(url =>
@@ -103,6 +101,7 @@ export const fetchWeatherData = searchTerm => dispatch => {
         .then(res => res.json())
     ))
       .then(res => aggregateData(res))
-      .then(res => console.log(res))
+      .then(data => dispatch(fetchWeatherDataSuccess(data)))
+      .catch(err => dispatch(fetchWeatherDataError(err)))
   );
 }

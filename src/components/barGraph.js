@@ -13,51 +13,37 @@ export default function barGraph() {
           {
             "date": "9-13-2018",
             "Max Temp": 212,
-            "maximumColor": "hsl(164, 70%, 50%)",
-            "Min Temp": 139,
-            "minimumColor": "hsl(176, 70%, 50%)"
+            "Min Temp": 139
           },
           {
             "date": "9-12-2018",
             "Max Temp": 212,
-            "maximumColor": "hsl(164, 70%, 50%)",
-            "Min Temp": 139,
-            "minimumColor": "hsl(176, 70%, 50%)"
+            "Min Temp": 139
           },
           {
             "date": "9-11-2018",
             "Max Temp": 212,
-            "maximumColor": "hsl(164, 70%, 50%)",
-            "Min Temp": 139,
-            "minimumColor": "hsl(176, 70%, 50%)"
+            "Min Temp": 139
           },
           {
             "date": "9-10-2018",
             "Max Temp": 212,
-            "maximumColor": "hsl(164, 70%, 50%)",
-            "Min Temp": 139,
-            "minimumColor": "hsl(176, 70%, 50%)"
+            "Min Temp": 139
           },
           {
             "date": "9-09-2018",
             "Max Temp": 212,
-            "maximumColor": "hsl(164, 70%, 50%)",
-            "Min Temp": 139,
-            "minimumColor": "hsl(176, 70%, 50%)"
+            "Min Temp": 139
           },
           {
             "date": "9-08-2018",
             "Max Temp": 212,
-            "maximumColor": "hsl(164, 70%, 50%)",
-            "Min Temp": 139,
-            "minimumColor": "hsl(176, 70%, 50%)"
+            "Min Temp": 139
           },
           {
             "date": "9-07-2018",
             "Max Temp": 212,
-            "maximumColor": "hsl(164, 70%, 50%)",
-            "Minimum": 139,
-            "minimumColor": "hsl(176, 70%, 50%)"
+            "Min Temp": 139
           }
         ]}
         keys={[
@@ -73,7 +59,7 @@ export default function barGraph() {
         }}
         padding={0.3}
         groupMode="grouped"
-        colors="oranges"
+        colors={["#D65DB1", "#FFC75F"]}
         axisBottom={{
           "orient": "bottom",
           "tickSize": 5,
@@ -107,9 +93,9 @@ export default function barGraph() {
             "anchor": "bottom-right",
             "direction": "column",
             "justify": true,
-            "translateX": 109,
+            "translateX": 106,
             "translateY": 0,
-            "itemWidth": 100,
+            "itemWidth": 80,
             "itemHeight": 15,
             "itemsSpacing": 0,
             "symbolSize": 15,

@@ -31,7 +31,6 @@ const weatherData = (state = initialState, action) => {
       error: action.error
     };
   }
-
   return state;
 }
 
