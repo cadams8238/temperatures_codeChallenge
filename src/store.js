@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import weatherData from './reducers/weather';
+import weatherReducer from './reducers/weather';
 
 const store = createStore(
-  weatherData,
+  weatherReducer,
   applyMiddleware(thunk)
 );
 

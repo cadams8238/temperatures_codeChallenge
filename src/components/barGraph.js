@@ -59,7 +59,7 @@ export default function barGraph() {
         }}
         padding={0.3}
         groupMode="grouped"
-        colors={["#D65DB1", "#FFC75F"]}
+        colors={["#FF9671", "#FFC75F"]}
         axisBottom={{
           "orient": "bottom",
           "tickSize": 5,

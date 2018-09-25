@@ -10,7 +10,7 @@ const initialState = {
   error: null
 }
 
-const weatherData = (state = initialState, action) => {
+const weatherReducer = (state = initialState, action) => {
   if (action.type === FETCH_WEATHER_DATA_REQUEST) {
     return {
       ...state,
@@ -34,4 +34,4 @@ const weatherData = (state = initialState, action) => {
   return state;
 }
 
-export default weatherData;
+export default weatherReducer;

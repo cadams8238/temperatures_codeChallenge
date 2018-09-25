@@ -54,8 +54,10 @@ export class Dashboard extends Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//
-// })
+const mapStateToProps = state => ({
+  loading: state.loading,
+  data: state.data,
+  error: state.error
+})
 
-export default connect()(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
