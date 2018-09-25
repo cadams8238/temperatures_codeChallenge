@@ -34,7 +34,7 @@ export const encodeSpaces = searchTerm => {
   return encodedSearch;
 }
 
-export const getWeatherHistoryData = () => {
+export const getWeatherHistoryDates = () => {
   let dates = [];
 
   for (let i = 0; i < 7; i++) {
@@ -60,7 +60,7 @@ export const fetchWeatherData = searchTerm => dispatch => {
 
 
   const search = encodeSpaces(searchTerm);
-  const weatherHistoryDates = getWeatherHistoryData();
+  const weatherHistoryDates = getWeatherHistoryDates();
   const urls = createURLs(weatherHistoryDates, search);
 
 

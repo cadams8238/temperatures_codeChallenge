@@ -31,9 +31,7 @@ export class Dashboard extends Component {
           <h1 className={styles.h1}>
             Search cities for 7-day weather history from today
           </h1>
-          {/* section should be form - having trouble debugging why e.preventDefault won't work
-          on form, changed to section temporarily, will fix later */}
-          <section role="search"
+          <form role="search"
             className={styles.form}
           >
             <input
@@ -43,12 +41,12 @@ export class Dashboard extends Component {
               id="search"
               name="search"
               placeholder="Amsterdam"
-              aria-label="Search cities for weather history"
+              aria-label="Search cities for 7 day weather history"
             />
             <button onClick={(e) => this.fetchData(e)}>
               <img src={require('../images/search.svg')} alt="search icon" />
             </button>
-          </section>
+          </form>
         </div>
         <BarGraph />
       </div>
