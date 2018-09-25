@@ -2,50 +2,14 @@ import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import styles from './styles/graph.module.css';
 
-export default function barGraph() {
+export default function barGraph(props) {
 // make sure parent container have a defined height when using responsive component,
 // otherwise height will be 0 and no chart will be rendered.
 // website examples showcase many properties, you'll often use just a few of them.
   return (
     <div className={styles.barGraph}>
       <ResponsiveBar
-        data={[
-          {
-            "date": "9-13-2018",
-            "Max Temp": 212,
-            "Min Temp": 139
-          },
-          {
-            "date": "9-12-2018",
-            "Max Temp": 212,
-            "Min Temp": 139
-          },
-          {
-            "date": "9-11-2018",
-            "Max Temp": 212,
-            "Min Temp": 139
-          },
-          {
-            "date": "9-10-2018",
-            "Max Temp": 212,
-            "Min Temp": 139
-          },
-          {
-            "date": "9-09-2018",
-            "Max Temp": 212,
-            "Min Temp": 139
-          },
-          {
-            "date": "9-08-2018",
-            "Max Temp": 212,
-            "Min Temp": 139
-          },
-          {
-            "date": "9-07-2018",
-            "Max Temp": 212,
-            "Min Temp": 139
-          }
-        ]}
+        data={props.graphData}
         keys={[
           "Min Temp",
           "Max Temp"

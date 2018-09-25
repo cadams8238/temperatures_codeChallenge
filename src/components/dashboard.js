@@ -25,14 +25,35 @@ export class Dashboard extends Component {
   }
 
   render() {
-    let cityInfo;
+    let weatherInfo, loading, error;
 
     if (this.props.data) {
-      cityInfo = (
-        <div className={styles.cityInfo}>
-          <h2>{`${this.props.data.name}, ${this.props.data.region}`}</h2>
-          <p>{`${this.props.data.country}`}</p>
-        </div>
+      const graphDataFarenheit = this.props.data.temps.map(day => ({
+        date: day.date,
+        "Max Temp": day.maxtemp_f,
+        "Min Temp": day.mintemp_f
+      }))
+
+      weatherInfo = (
+        <React.Fragment>
+          <div className={styles.cityInfo}>
+            <h2>{`${this.props.data.name}, ${this.props.data.region}`}</h2>
+            <p>{`${this.props.data.country}`}</p>
+          </div>
+          <BarGraph graphData={graphDataFarenheit}/>
+        </React.Fragment>
+      )
+    }
+
+    if (this.props.loading) {
+      loading = (
+        <p>Loading...</p>
+      )
+    }
+
+    if (this.props.error) {
+      error = (
+        <p>{this.props.error}</p>
       )
     }
 
@@ -58,8 +79,8 @@ export class Dashboard extends Component {
             <img src={require('../images/search.svg')} alt="search icon" />
           </button>
         </form>
-        {cityInfo}
-        <BarGraph />
+        {error}
+        {this.props.loading ? loading : weatherInfo}
       </div>
     );
   }
