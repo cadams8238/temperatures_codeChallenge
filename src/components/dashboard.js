@@ -37,8 +37,12 @@ export class Dashboard extends Component {
       weatherInfo = (
         <React.Fragment>
           <div className={styles.cityInfo}>
-            <h2>{`${this.props.data.name}, ${this.props.data.region}`}</h2>
-            <p>{`${this.props.data.country}`}</p>
+            <div>
+              <h2>{`${this.props.data.name}, ${this.props.data.region}`}</h2>
+              <p>{`${this.props.data.country}`}</p>
+            </div>
+            <input className={styles.toggle} type="checkbox" />
+
           </div>
           <BarGraph graphData={graphDataFarenheit}/>
         </React.Fragment>
