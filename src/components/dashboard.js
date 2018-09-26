@@ -9,7 +9,8 @@ export class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: ''
+      searchTerm: '',
+      fahrenheit: true
     }
   }
 
@@ -24,15 +25,32 @@ export class Dashboard extends Component {
     this.props.dispatch(fetchWeatherData(this.state.searchTerm))
   }
 
+  toggleTemperature() {
+    this.setState({
+      fahrenheit: !this.state.fahrenheit
+    })
+  }
+
   render() {
     let weatherInfo, loading, error;
 
     if (this.props.data) {
-      const graphDataFarenheit = this.props.data.temps.map(day => ({
-        date: day.date,
-        "Max Temp": day.maxtemp_f,
-        "Min Temp": day.mintemp_f
-      }))
+      let graphData;
+
+      if (this.state.fahrenheit) {
+        graphData = this.props.data.temps.map(day => ({
+          date: day.date,
+          "Max Temp": day.maxtemp_f,
+          "Min Temp": day.mintemp_f
+        }))
+      }
+      else if (!this.state.fahrenheit) {
+        graphData = this.props.data.temps.map(day => ({
+          date: day.date,
+          "Max Temp": day.maxtemp_c,
+          "Min Temp": day.mintemp_c
+        }))
+      }
 
       weatherInfo = (
         <React.Fragment>
@@ -41,10 +59,12 @@ export class Dashboard extends Component {
               <h2>{`${this.props.data.name}, ${this.props.data.region}`}</h2>
               <p>{`${this.props.data.country}`}</p>
             </div>
-            <input className={styles.toggle} type="checkbox" />
-
+            <input className={styles.toggle}
+              type="checkbox"
+              onChange={() => this.toggleTemperature()}
+            />
           </div>
-          <BarGraph graphData={graphDataFarenheit}/>
+          <BarGraph graphData={graphData}/>
         </React.Fragment>
       )
     }
