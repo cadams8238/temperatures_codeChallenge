@@ -87,7 +87,6 @@ export const aggregateData = (apiResponse) => {
 
 
 export const fetchWeatherData = searchTerm => dispatch => {
-  // console.log(process.env.REACT_APP_API_KEY);
   dispatch(fetchWeatherDataRequest())
 
   const search = encodeSpaces(searchTerm);
