@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchWeatherData } from '../actions/weatherData';
 
+import SearchForm from './searchForm';
 import BarGraph from './barGraph';
 import Loader from 'react-loader-spinner';
 
@@ -16,9 +17,9 @@ export class Dashboard extends Component {
     }
   }
 
-  updateSearchTerm(e) {
+  updateSearchTerm(value) {
     this.setState({
-      searchTerm: e.target.value
+      searchTerm: value
     })
   }
 
@@ -94,7 +95,12 @@ export class Dashboard extends Component {
         <h1 className={styles.h1}>
           Search cities for 7-day weather history from today
         </h1>
-        <form role="search"
+        <SearchForm
+          searchTerm={this.state.searchTerm}
+          updateSearchTerm={value => this.updateSearchTerm(value)}
+          fetchData={e => this.fetchData(e)}
+        />
+        {/* <form role="search"
           className={styles.form}
         >
           <input
@@ -109,7 +115,7 @@ export class Dashboard extends Component {
           <button onClick={(e) => this.fetchData(e)}>
             <img src={require('../images/search.svg')} alt="search icon" />
           </button>
-        </form>
+        </form> */}
         { show }
       </div>
     );
