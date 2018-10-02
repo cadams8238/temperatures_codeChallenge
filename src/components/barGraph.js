@@ -2,7 +2,7 @@ import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import styles from './styles/graph.module.css';
 
-export default function barGraph(props) {
+export default function BarGraph(props) {
 // make sure parent container have a defined height when using responsive component,
 // otherwise height will be 0 and no chart will be rendered.
 // website examples showcase many properties, you'll often use just a few of them.

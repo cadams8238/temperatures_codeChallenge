@@ -1,5 +1,4 @@
 import moment from 'moment';
-// require('dotenv').config();
 const BASE_API_URL = "http://api.apixu.com/v1/history.json?key=";
 
 
@@ -49,7 +48,7 @@ export const getWeatherHistoryDates = () => {
 }
 
 export const createURLs = (dates, search) => {
-  return dates.map(date => `${BASE_API_URL}0e565417ca764b0d86b191522181409&q=${search}&dt=${date}`);
+  return dates.map(date => `${BASE_API_URL}${process.env.REACT_APP_API_KEY}&q=${search}&dt=${date}`);
 }
 
 export const aggregateData = (apiResponse) => {
@@ -89,7 +88,7 @@ export const aggregateData = (apiResponse) => {
 
 export const fetchWeatherData = searchTerm => dispatch => {
   // console.log(process.env.REACT_APP_API_KEY);
-  dispatch(fetchWeatherDataRequest)
+  dispatch(fetchWeatherDataRequest())
 
   const search = encodeSpaces(searchTerm);
   const weatherHistoryDates = getWeatherHistoryDates();

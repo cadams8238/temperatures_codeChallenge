@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchWeatherData } from '../actions/weatherData';
+
 import BarGraph from './barGraph';
+import Loader from 'react-loader-spinner';
 
 import styles from './styles/dashboard.module.css';
 
@@ -71,7 +73,12 @@ export class Dashboard extends Component {
 
     if (this.props.loading) {
       loading = (
-        <p>Loading...</p>
+        <Loader
+          type="ThreeDots"
+          color="#00BFFF"
+          height="100"
+          width="100"
+        />
       )
     }
 
