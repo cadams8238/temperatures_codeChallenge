@@ -100,22 +100,6 @@ export class Dashboard extends Component {
           updateSearchTerm={value => this.updateSearchTerm(value)}
           fetchData={e => this.fetchData(e)}
         />
-        {/* <form role="search"
-          className={styles.form}
-        >
-          <input
-            value={this.state.searchTerm}
-            onChange={e => this.updateSearchTerm(e)}
-            type="search"
-            id="search"
-            name="search"
-            placeholder="Amsterdam"
-            aria-label="Search cities for 7 day weather history"
-          />
-          <button onClick={(e) => this.fetchData(e)}>
-            <img src={require('../images/search.svg')} alt="search icon" />
-          </button>
-        </form> */}
         { show }
       </div>
     );
