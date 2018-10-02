@@ -1,5 +1,5 @@
 import moment from 'moment';
-const BASE_API_URL = "http://api.apixu.com/v1/history.json?key=";
+export const BASE_API_URL = "http://api.apixu.com/v1/history.json?key=";
 
 
 export const FETCH_WEATHER_DATA_REQUEST = 'FETCH_WEATHER_DATA_REQUEST'
