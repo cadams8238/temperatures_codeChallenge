@@ -34,9 +34,9 @@ export class Dashboard extends Component {
   }
 
   render() {
-    let weatherInfo, loading, error;
+    let show;
 
-    if (this.props.data) {
+    if (this.props.data && !this.props.loading && !this.props.error) {
       let graphData;
 
       if (this.state.fahrenheit) {
@@ -54,7 +54,7 @@ export class Dashboard extends Component {
         }))
       }
 
-      weatherInfo = (
+      show = (
         <React.Fragment>
           <div className={styles.cityInfo}>
             <div>
@@ -72,7 +72,7 @@ export class Dashboard extends Component {
     }
 
     if (this.props.loading) {
-      loading = (
+      show = (
         <Loader
           type="ThreeDots"
           color="#00BFFF"
@@ -83,8 +83,8 @@ export class Dashboard extends Component {
     }
 
     if (this.props.error) {
-      error = (
-        <p>{this.props.error}</p>
+      show = (
+        <p>You've entered an incorrect input. Please try again.</p>
       )
     }
 
@@ -110,8 +110,7 @@ export class Dashboard extends Component {
             <img src={require('../images/search.svg')} alt="search icon" />
           </button>
         </form>
-        {error}
-        {this.props.loading ? loading : weatherInfo}
+        { show }
       </div>
     );
   }
