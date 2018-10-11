@@ -16,10 +16,10 @@ This app allows you to get weather history data from the current date and all th
 
 ## How to Set Up Locally
 
-1. Navigate to root folder `temps/` in your terminal
+1. Clone repo into it's own directory and navigate into that directory
 1. Install dev dependencies by running `npm install`
 1. Set up .env file
-   1. Create `.env` in root folder `temps/`
+   1. Create `.env` in root folder
    1. Create a variable for your API key from APIXU Weather API.
    - _Format like this:_ `REACT_APP_API_KEY=yourSecretKey`
 1. To run app locally, (from the root folder in your terminal) run `npm start`
