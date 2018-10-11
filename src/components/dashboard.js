@@ -81,7 +81,11 @@ export class Dashboard extends Component {
 		}
 
 		if (this.props.error) {
-			show = <p>You've entered an incorrect input. Please try again.</p>;
+			show = (
+				<p className={styles.errorMessage}>
+					You've entered an incorrect input. Please try again.
+				</p>
+			);
 		}
 
 		return (
