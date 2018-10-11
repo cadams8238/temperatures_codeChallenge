@@ -1,6 +1,20 @@
-## Weather History
+# Weather History
 
-#### How to Set Up Locally
+This app allows you to get weather history data from the current date and all the previous 7 days from that date. You're able to search cities from all across the globe including:
+
+- San Francisco, CA
+- Amsterdam, Netherlands
+- Oakland, CA
+- Rome, Italy
+- Cleveland, OH
+- Tel Aviv, Israel
+- New York City, NY
+- Murmansk, Russia
+- Istanbul, Turkey
+
+---
+
+## How to Set Up Locally
 
 1. Navigate to root folder `temps/` in your terminal
 1. Install dev dependencies by running `npm install`
