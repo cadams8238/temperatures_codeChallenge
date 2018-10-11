@@ -74,3 +74,8 @@
 .toggle:checked:before {
 	left: 30px;
 }
+
+.loading {
+	margin-top: 30vh;
+	text-align: center;
+}
