@@ -27,6 +27,10 @@ describe("<SearchForm />", () => {
 		it("Should contain an input element", () => {
 			expect(wrapper.find("input")).toHaveLength(1);
 		});
+
+		it("Should contain a button element", () => {
+			expect(wrapper.find("button")).toHaveLength(1);
+		});
 	});
 
 	describe("behavior", () => {
