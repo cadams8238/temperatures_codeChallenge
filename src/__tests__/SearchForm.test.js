@@ -52,20 +52,21 @@ describe("<SearchForm />", () => {
 	});
 
 	describe("behavior", () => {
-		it("Should call function passed in on button click", () => {
-			const updateSearchTerm = jest.fn(),
-				fetchData = jest.fn(),
-				searchTerm = "",
-				component = mount(
-					<SearchForm
-						updateSearchTerm={updateSearchTerm}
-						fetchData={fetchData}
-						searchTerm={searchTerm}
-					/>
-				);
+		let props, component;
 
+		beforeEach(() => {
+			props = {
+				updateSearchTerm: jest.fn(),
+				fetchData: jest.fn(),
+				searchTerm: ""
+			};
+
+			component = mount(<SearchForm {...props} />);
+		});
+
+		it("Should call function passed in on button click", () => {
 			component.find("button").simulate("click");
-			expect(fetchData).toBeCalled();
+			expect(props.fetchData).toBeCalled();
 		});
 	});
 });
