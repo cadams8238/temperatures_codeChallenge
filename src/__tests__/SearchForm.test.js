@@ -1,6 +1,6 @@
 import React from "react";
 import SearchForm from "../components/searchForm";
-import { shallow, mount } from "enzyme";
+import { mount } from "enzyme";
 
 describe("SearchForm component", () => {
 	let props, wrapper;
@@ -20,7 +20,7 @@ describe("SearchForm component", () => {
 	});
 
 	it("Should render a form", () => {
-		expect(wrapper.find("form").length).toBeGreaterThan(0);
+		expect(wrapper.find("form")).toHaveLength(1);
 	});
 
 	it("Should call function passed in on button click", () => {
