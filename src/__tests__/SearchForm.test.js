@@ -64,9 +64,21 @@ describe("<SearchForm />", () => {
 			component = mount(<SearchForm {...props} />);
 		});
 
-		it("Should call function passed in on button click", () => {
+		it("Should call `fetchData()` on button click", () => {
 			component.find("button").simulate("click");
 			expect(props.fetchData).toBeCalled();
+		});
+
+		it("Should call `updateSearchTerm()` when text in input element changes", () => {
+			component.find("input").simulate("change", { target: { value: "" } });
+			expect(props.updateSearchTerm).toBeCalled();
+		});
+
+		it("Should update `searchTerm` when text in input element changes", () => {
+			component
+				.find("input")
+				.simulate("change", { target: { value: "Portland" } });
+			expect(props.updateSearchTerm).toBeCalledWith("Portland");
 		});
 	});
 });
