@@ -8,9 +8,9 @@ describe("<SearchForm />", () => {
 
 		beforeEach(() => {
 			props = {
-				updateSearchTerm: undefined,
-				fetchData: undefined,
-				searchTerm: undefined
+				updateSearchTerm: jest.fn(),
+				fetchData: jest.fn(),
+				searchTerm: ""
 			};
 
 			wrapper = mount(<SearchForm {...props} />);
@@ -30,6 +30,24 @@ describe("<SearchForm />", () => {
 
 		it("Should contain a button element", () => {
 			expect(wrapper.find("button")).toHaveLength(1);
+		});
+
+		describe("props", () => {
+			it("should receive 3 props", () => {
+				expect(Object.keys(wrapper.props()).length).toBe(3);
+			});
+
+			it("should receive updateSearchTerm function", () => {
+				expect(wrapper.props().updateSearchTerm).toBe(props.updateSearchTerm);
+			});
+
+			it("should receive fetchData function", () => {
+				expect(wrapper.props().fetchData).toBe(props.fetchData);
+			});
+
+			it("should receive searchTerm value (string)", () => {
+				expect(wrapper.props().searchTerm).toBe(props.searchTerm);
+			});
 		});
 	});
 
