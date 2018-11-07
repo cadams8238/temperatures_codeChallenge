@@ -2,18 +2,25 @@ import React from "react";
 import SearchForm from "../components/searchForm";
 import { shallow, mount } from "enzyme";
 
-describe("<SearchForm />", () => {
+describe("SearchForm component", () => {
+	let props, wrapper;
+
+	beforeEach(() => {
+		props = {
+			updateSearchTerm: undefined,
+			fetchData: undefined,
+			searchTerm: undefined
+		};
+
+		wrapper = mount(<SearchForm {...props} />);
+	});
+
 	it("Should render without crashing", () => {
-		const updateSearchTerm = jest.fn(),
-			fetchData = jest.fn(),
-			searchTerm = "";
-		shallow(
-			<SearchForm
-				updateSearchTerm={updateSearchTerm}
-				fetchData={fetchData}
-				searchTerm={searchTerm}
-			/>
-		);
+		wrapper;
+	});
+
+	it("Should render a form", () => {
+		expect(wrapper.find("form").length).toBeGreaterThan(0);
 	});
 
 	it("Should call function passed in on button click", () => {
@@ -27,7 +34,6 @@ describe("<SearchForm />", () => {
 					searchTerm={searchTerm}
 				/>
 			);
-		// console.log(component.debug());
 
 		component.find("button").simulate("click");
 		expect(fetchData).toBeCalled();
